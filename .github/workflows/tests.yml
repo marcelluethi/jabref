@@ -235,6 +235,8 @@ jobs:
         id: authors_check
         shell: bash
         run: |
+          git config user.name "JabRef Author Checker [bot]"
+          git config user.email "noreply@jabref.org"
           ./scripts/generate-authors.sh
           set +o pipefail
           added=$(git diff HEAD --no-ext-diff --unified=0 -a --no-prefix | egrep "^\+[^+]" | sed "s/^\+//")
